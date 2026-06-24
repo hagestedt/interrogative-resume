@@ -1,0 +1,28 @@
+<!doctype html>
+<!--
+  Source for public/apple-touch-icon.png (180x180, full-bleed garnet — iOS rounds it).
+  Regenerate:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --hide-scrollbars --window-size=180,180 \
+      --screenshot=public/apple-touch-icon.png "$(pwd)/scripts/icon.html"
+  The tab favicon is the vector public/favicon.svg (same garnet "AH" monogram).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 180px; height: 180px; }
+      body {
+        background: #7E2A3A;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      }
+      .ah { color: #FAFAFA; font-weight: 700; font-size: 86px; letter-spacing: -4px; line-height: 1; }
+    </style>
+  </head>
+  <body><div class="ah">AH</div></body>
+</html>
