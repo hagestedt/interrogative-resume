@@ -130,7 +130,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                                 <button
                                     type="submit"
                                     disabled={step === 'submitting'}
-                                    className="w-full bg-nature-100 text-nature-950 font-bold py-2 rounded-lg hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full border border-accent-gold text-accent-gold font-semibold py-2 rounded-lg hover:bg-accent-gold/10 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {step === 'submitting' ? (
                                         <>

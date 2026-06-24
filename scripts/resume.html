@@ -1,0 +1,170 @@
+<!doctype html>
+<!--
+  Print source for public/Adam-Hagestedt-Resume-2026.pdf. Garnet-on-ink personal
+  brand (light mode for print). Content mirrors job-search-2026-05/
+  adam-hagestedt-resume-2026.md, honesty-framed per messaging-spine.md
+  (NVIDIA GTC = demoed/in-flight RFP, not "launched"; "function leader for
+  geo-led teams"; internal $ = programs supported). Regenerate with headless Chrome:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --no-pdf-header-footer \
+      --print-to-pdf="public/Adam-Hagestedt-Resume-2026.pdf" \
+      "$(pwd)/scripts/resume.html"
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
+    <style>
+      @page { size: Letter; margin: 0.5in 0.55in; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: 'Inter', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #18181B; font-size: 10.3pt; line-height: 1.36;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      a { color: #7E2A3A; text-decoration: none; }
+      header { border-bottom: 2px solid #7E2A3A; padding-bottom: 9px; margin-bottom: 12px; }
+      .name { font-family: 'Fraunces', Georgia, serif; font-size: 25pt; font-weight: 600; letter-spacing: -0.4px; color: #18181B; }
+      .name .p { color: #7E2A3A; }
+      .role { font-size: 11.5pt; font-weight: 600; color: #7E2A3A; margin-top: 2px; }
+      .contact { font-size: 8.9pt; color: #52525B; margin-top: 6px; }
+      .contact span { white-space: nowrap; }
+      .sep { color: #A1A1AA; padding: 0 5px; }
+      h2 {
+        font-size: 9.8pt; font-weight: 700; letter-spacing: 0.4px;
+        color: #18181B; border-bottom: 1px solid #E4E4E7; padding-bottom: 3px;
+        margin: 14px 0 7px;
+      }
+      .summary { margin: 0; }
+      ul { margin: 4px 0 0; padding-left: 16px; }
+      li { margin-bottom: 3px; }
+      li::marker { color: #7E2A3A; }
+      .job { page-break-inside: avoid; margin-bottom: 9px; }
+      .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+      .job-title { font-weight: 700; font-size: 10.6pt; color: #18181B; }
+      .job-co { font-weight: 600; color: #27272A; }
+      .job-dates { font-size: 9pt; color: #52525B; white-space: nowrap; }
+      .job-meta { font-size: 9pt; color: #52525B; font-style: italic; margin-top: 1px; }
+      .skills p { margin: 3px 0; }
+      .skills b { color: #18181B; }
+      strong { color: #18181B; }
+      .edu { display: flex; justify-content: space-between; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="name">Adam Hagestedt<span class="p">.</span></div>
+      <div class="role">VP of Product Management &mdash; AI Implementation &amp; Agentic Systems</div>
+      <div class="contact">
+        <span>Portland, OR</span><span class="sep">&middot;</span><span>Remote US / Seattle hybrid</span><span class="sep">&middot;</span><span>hagestedt@gmail.com</span><span class="sep">&middot;</span><span>503-869-2323</span><br />
+        <span>linkedin.com/in/adam-hagestedt</span><span class="sep">&middot;</span><span>hagestedt.com</span><span class="sep">&middot;</span><span>github.com/hagestedt</span>
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p class="summary">
+      AI-implementation executive who leads enterprise rollouts <strong>and ships the production code that proves them.</strong>
+      Rolled Claude Code to <strong>500+ active users</strong> across a 3,000+ person org; <strong>demoed RL environments at NVIDIA GTC</strong>
+      in two weeks (now in active RFP with multiple Mag-7 customers); <strong>replaced a ~$1M/yr platform in 1.5 weeks</strong>; and earlier
+      owned the <strong>$1.5B profitability platform</strong> at Amazon. Currently VP of Product Management at Centific (joined as Senior
+      Director, Apr 2025; promoted VP 2026), running <strong>6 AI product lines</strong> as function leader for globally distributed teams.
+      Reads P&amp;L (Gonzaga MBA, Portland State Finance), writes code (Python/FastAPI/React on Cloudflare Workers), and ships by killing what doesn't matter.
+    </p>
+
+    <h2>Selected Highlights</h2>
+    <ul>
+      <li><strong>Enterprise AI rollout, 0 &rarr; 500+ active users</strong> on Claude Code in a 3,000+ person org (~17% adoption, ~50% of engineering) &mdash; via a 3-phase adoption playbook that ports to any agent platform.</li>
+      <li><strong>Demoed RL environments at NVIDIA GTC in 2 weeks</strong> &mdash; an agent-powered, industry-configurable RL human-in-the-loop demo any account executive can run live with zero setup; now in active RFP with multiple Mag-7 customers. Deployed on Cloudflare Workers.</li>
+      <li><strong>Replaced a ~$1M/yr third-party platform in 1.5 weeks</strong> &mdash; shipped a custom annotation OS for Physical AI decision-to-production by cutting every non-essential feature, with zero downtime on live projects.</li>
+      <li><strong>$1.5B profitability lift at Amazon</strong> &mdash; read the P&amp;L, designed the ML negotiation system with engineering, automated 6,000+ long-tail vendors, killed the segments that didn't pay back.</li>
+      <li><strong>Shipped 4 AI platforms in 10 months</strong> across US/India/China/Singapore/EU teams; <strong>owns 6 AI product lines</strong> spanning annotation, data marketplaces, data lifecycle, and RL simulation.</li>
+      <li><strong>Cut an enterprise security rollout from a stalled 21-week vendor path to a 6-week in-house Phase 1</strong> &mdash; authored the anti-fraud secure-workspace architecture after evaluating the field (Scale AI, Appen, TELUS, Island.io, Palo Alto Prisma).</li>
+    </ul>
+
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Senior Director &rarr; VP, Product Management</span>, <span class="job-co">Centific</span></span><span class="job-dates">Apr 2025 &ndash; Present</span></div>
+      <div class="job-meta">AI data platform &amp; services company (3,000+ employees). Function leader for 6 AI product lines + Solutions Engineering &amp; Pre-Sales; geo-led teams across US, India, China, Singapore, EU (direct: 4 SE team leads + ~12 ICs; hired 3 of 4 leads). Joined as Senior Director; promoted to VP in 2026.</div>
+      <ul>
+        <li><strong>Led enterprise AI adoption from 0 &rarr; 500+ active users.</strong> Selected, deployed, and operationalized Claude Code Enterprise (~17% adoption, ~50% of engineering) on a product-agnostic 3-phase framework; became the cross-company AI-adoption point of contact.</li>
+        <li><strong>Shipped 4 AI platforms in 10 months</strong> as function leader across globally distributed teams: an annotation OS for Physical AI, a unified data platform, a data-marketplace &rarr; data-ecosystem pivot, and an RL human-in-the-loop demo.</li>
+        <li><strong>Replaced a ~$1M/yr platform in 1.5 weeks</strong> by cutting every non-essential feature, with zero downtime on existing customer projects.</li>
+        <li><strong>Demoed RL environments at NVIDIA GTC in 2 weeks</strong> &mdash; agent-powered, industry-configurable RL with human verification, runnable in any customer meeting with zero setup; now in active RFP with multiple Mag-7 customers.</li>
+        <li><strong>Built the internal AI-adoption observability tool solo</strong> &mdash; scraper &rarr; SQLite &rarr; FastAPI &rarr; React/D3 &mdash; making usage and ROI legible across 3,000+ people with no BI tool, license, or infra dependency.</li>
+        <li><strong>Authored an org reform</strong> merging Solutions Engineering and platform engineering to decouple revenue growth from headcount via agentic workflows &mdash; shifting from selling labor hours to selling delivered datasets.</li>
+        <li><strong>Architected an in-house anti-fraud secure workspace</strong> (Chromium/Electron); proposed Phase 1 in 6 weeks vs. a stalled 21-week vendor negotiation. Controls mapped to SOC 2 / NIST 800-53.</li>
+        <li><strong>Drove AI-implementation outcomes with marquee customers</strong> (generic for confidentiality): a multi-million-dollar (SGD) video-annotation pilot across 6 teams in 3 time zones for a global enterprise; an MBR product demo shipped on deadline for a Mag-7 customer; a Generative-AI-services RFI for a leading frontier AI lab; an iOS-native RL-environment suite RFP, in active submission, for a Fortune-50 consumer-electronics company.</li>
+        <li><strong>Built reusable AI tooling now used across teams</strong> &mdash; an M365 AI Analyst Agent for weekly status reports, a UX Information-Architect skill for Claude, and a Claude&rarr;Jira auto-comment pipeline running daily in production (architected/operationalized by Adam; built with an engineering lead).</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Group PM, Salesforce Success Central</span>, <span class="job-co">AWS</span></span><span class="job-dates">2023 &ndash; 2024</span></div>
+      <ul>
+        <li><strong>Drove Amazon's enterprise migration from a custom internal CRM to Salesforce</strong>, overcoming a deep "Not Invented Here" culture without a top-down mandate.</li>
+        <li><strong>Unblocked enterprise-wide AI adoption on security</strong> &mdash; influenced Salesforce's Einstein AI roadmap to meet Amazon's AppSec/privacy bar, the direct analog to the security gate every enterprise AI rollout must clear.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Senior Director, CX SaaS &amp; Chief of Staff</span>, <span class="job-co">Cisco</span></span><span class="job-dates">2021 &ndash; 2022</span></div>
+      <ul>
+        <li><strong>Owned customer-facing on-prem-to-cloud migration</strong> of the WebEx contact-center ecosystem ("Better Together"), driving <strong>30&ndash;40% velocity gains</strong> through cross-team dependency planning.</li>
+        <li><strong>Built Journey-as-a-Service</strong> &mdash; AI-driven digital-footprint tracking for proactive contact avoidance &mdash; as a differentiator competitors couldn't match.</li>
+        <li><strong>Chief of Staff to the GM:</strong> strategic right-hand taking first-round decisions and synthesizing signals into executive calls across senior directors and VPs.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Group PM, Analytics &amp; AI (Amazon Connect)</span>, <span class="job-co">AWS</span></span><span class="job-dates">2019 &ndash; 2021</span></div>
+      <ul>
+        <li><strong>Architected the Math Engine &amp; Event Store</strong> &mdash; an event-driven analytics platform letting enterprise customers ingest their own events and define custom metrics across voice, chat, and video.</li>
+        <li><strong>Launched Contact Lens (real-time AI)</strong> &mdash; sentiment analysis and manager nudges on <strong>100% of calls</strong>, replacing the legacy ~1% supervisor-sampling model.</li>
+        <li><strong>Closed Fortune 500 deals</strong> running pre-sales engineering and critical escalations directly.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Group PM, Automated Profitability Management</span>, <span class="job-co">Amazon</span></span><span class="job-dates">2015 &ndash; 2019</span></div>
+      <ul>
+        <li><strong>$1.5B profitability lift</strong> &mdash; read the P&amp;L unit economics, designed the ML negotiation system with engineering, and automated negotiations for <strong>6,000+ long-tail vendors</strong> via attribute mapping and virtual benchmarking.</li>
+        <li><strong>$500M incremental revenue stream</strong> from real-time profitability nudges (Buy-Box-loss and unprofitable-item triggers).</li>
+        <li><strong>Built and led 5 PMs</strong> plus an offshore execution arm in India; moved vendor management from ~80% manual to automated ("Hands Off the Wheel").</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Global Supply Manager, Connectors &amp; Cables</span>, <span class="job-co">Apple</span></span><span class="job-dates">2014 &ndash; 2015</span></div>
+      <ul>
+        <li><strong>Launched a Brazil manufacturing line to optimize import-tax strategy</strong> for lightning cables &mdash; supply chain as financial engineering.</li>
+        <li><strong>Delivered tech-integrated retail displays for the original Apple Watch launch</strong> under immovable hardware deadlines; held production lines at 100% uptime through component shortages.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><span><span class="job-title">Category Leader, Amazon Supply</span>, <span class="job-co">Amazon</span></span><span class="job-dates">2011 &ndash; 2014</span></div>
+      <ul>
+        <li><strong>Scaled industrial categories to 200% YoY growth</strong> during the standup of Amazon's B2B business (precursor to Amazon Business).</li>
+        <li><strong>Pioneered "Vendor-as-Carrier" logistics</strong> for heavy industrial equipment &mdash; turning Amazon from a shipper into a service orchestrator.</li>
+      </ul>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <p><b>AI Implementation &amp; Enablement</b> &mdash; Enterprise AI adoption strategy &middot; LLM deployment at scale &middot; Claude Code Enterprise rollout (500+ users) &middot; 3-phase adoption frameworks &middot; AI-augmented delivery &middot; adoption observability &amp; ROI telemetry &middot; executive AI briefings</p>
+      <p><b>Agentic AI &amp; Production ML</b> &mdash; Agentic workflows &middot; AI agents &middot; MCP servers &middot; agent skills / sub-agents &middot; Claude Agent SDK (production) &middot; LangGraph / CrewAI / Google ADK (pattern fluency) &middot; RLHF/RLAIF pipelines &middot; RL Environments-as-a-Service &middot; RL human-in-the-loop &middot; Gymnasium API &middot; RLVR / verifiers &middot; evaluation frameworks</p>
+      <p><b>Data Platforms</b> &mdash; AI data platforms &middot; annotation operating systems &middot; sensor fusion / LiDAR / DICOM / point-cloud &middot; data marketplaces &middot; unified data lifecycle &middot; Physical AI &amp; healthcare AI data</p>
+      <p><b>Build / Hands-On</b> &mdash; Python &middot; FastAPI &middot; SQLite &middot; React / D3 &middot; TypeScript &middot; Node.js &middot; Cloudflare Workers &middot; API-first design &middot; microservices (Spring Boot/Cloud) &middot; AWS &middot; Azure &middot; vector databases &middot; GitHub</p>
+      <p><b>Product &amp; GTM</b> &mdash; Product strategy &middot; platform &amp; 0&rarr;1 PM &middot; build-vs-buy &middot; RFI/RFP technical leadership &middot; pre-sales / solutions engineering &middot; enterprise deal coordination &middot; marketplace economics &middot; competitive analysis</p>
+      <p><b>Leadership</b> &mdash; Function leader for globally distributed teams (US/India/China/Singapore/EU) &middot; org design &amp; transformation &middot; P&amp;L / unit-economics fluency &middot; single-threaded cross-functional leadership &middot; hiring &amp; coaching leads &middot; ruthless prioritization</p>
+    </div>
+
+    <h2>Education</h2>
+    <div class="edu"><span><strong>Gonzaga University</strong> &mdash; MBA, Supply Chain Management</span></div>
+    <div class="edu"><span><strong>Portland State University</strong> &mdash; BS, Finance</span></div>
+  </body>
+</html>

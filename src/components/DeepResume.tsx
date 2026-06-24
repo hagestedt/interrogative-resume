@@ -16,7 +16,7 @@ export const DeepResume: React.FC = () => {
         <section className="max-w-4xl mx-auto px-4">
             <div className="flex items-center gap-3 mb-8">
                 <Briefcase className="w-6 h-6 text-accent-sage" />
-                <h2 className="text-2xl font-bold text-cream-100">The Deep Resume</h2>
+                <h2 className="text-2xl font-bold text-cream-100">The deep résumé</h2>
             </div>
 
             <div className="space-y-4">
@@ -65,7 +65,7 @@ export const DeepResume: React.FC = () => {
                                         transition={{ duration: 0.3 }}
                                     >
                                         <div className="px-6 pb-6 pt-2 border-t border-stone-700/50 space-y-4">
-                                            <p className="text-xs uppercase tracking-widest text-stone-500 font-bold mb-4">Key Contributors</p>
+                                            <p className="text-xs tracking-widest text-stone-500 font-semibold mb-4">Key contributors</p>
                                             <div className="grid md:grid-cols-3 gap-4">
                                                 {job.highlights && job.highlights.map((highlight, hIndex) => (
                                                     <HighlightCard key={hIndex} highlight={highlight} job={job} />
@@ -128,22 +128,22 @@ const HighlightCard: React.FC<{ highlight: Highlight; job: Job }> = ({ highlight
                         >
                             <div className="p-4 pt-0 grid md:grid-cols-3 gap-4 border-t border-stone-700/30 mt-2">
                                 {/* Refactored to Stone cards with colored accents */}
-                                <div className="p-4 rounded bg-stone-900 border border-red-900/50 group hover:border-red-900/80 transition-colors">
-                                    <div className="flex items-center gap-2 mb-3 text-red-400 font-bold text-xs uppercase tracking-wider">
+                                <div className="p-4 rounded bg-stone-900 border border-amber-900/50 group hover:border-amber-900/80 transition-colors">
+                                    <div className="flex items-center gap-2 mb-3 text-amber-400 font-bold text-xs tracking-wider">
                                         <AlertTriangle className="w-3 h-3" /> Broken
                                     </div>
                                     <p className="text-sm text-cream-200 leading-relaxed">{highlight.broken}</p>
                                 </div>
 
-                                <div className="p-4 rounded bg-stone-900 border border-emerald-900/50 group hover:border-emerald-900/80 transition-colors">
-                                    <div className="flex items-center gap-2 mb-3 text-emerald-400 font-bold text-xs uppercase tracking-wider">
+                                <div className="p-4 rounded bg-stone-900 border border-garnet-800/50 group hover:border-garnet-700/80 transition-colors">
+                                    <div className="flex items-center gap-2 mb-3 text-garnet-400 font-bold text-xs tracking-wider">
                                         <CheckCircle className="w-3 h-3" /> Fixed
                                     </div>
                                     <p className="text-sm text-cream-200 leading-relaxed">{highlight.fixed}</p>
                                 </div>
 
-                                <div className="p-4 rounded bg-stone-900 border border-amber-900/50 group hover:border-amber-900/80 transition-colors">
-                                    <div className="flex items-center gap-2 mb-3 text-accent-gold font-bold text-xs uppercase tracking-wider">
+                                <div className="p-4 rounded bg-stone-900 border border-stone-700/50 group hover:border-stone-700/80 transition-colors">
+                                    <div className="flex items-center gap-2 mb-3 text-cream-300 font-bold text-xs tracking-wider">
                                         <Lightbulb className="w-3 h-3" /> Lesson
                                     </div>
                                     <p className="text-sm text-cream-200 leading-relaxed">{highlight.lesson}</p>

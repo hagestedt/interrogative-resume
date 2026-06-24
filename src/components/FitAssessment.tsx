@@ -7,9 +7,9 @@ type Status = 'idle' | 'loading' | 'done';
 
 // Full class strings (no dynamic concatenation) so Tailwind's purge keeps them.
 const VERDICT_STYLES = {
-    HIGH: { label: 'HIGH ALIGNMENT', text: 'text-emerald-400', border: 'border-l-emerald-500', Icon: CheckCircle },
-    MEDIUM: { label: 'PARTIAL ALIGNMENT', text: 'text-amber-400', border: 'border-l-amber-500', Icon: AlertTriangle },
-    LOW: { label: 'LOW ALIGNMENT', text: 'text-red-400', border: 'border-l-red-500', Icon: XCircle },
+    HIGH: { label: 'High alignment', text: 'text-garnet-400', border: 'border-l-garnet-500', Icon: CheckCircle },
+    MEDIUM: { label: 'Partial alignment', text: 'text-amber-400', border: 'border-l-amber-500', Icon: AlertTriangle },
+    LOW: { label: 'Low alignment', text: 'text-stone-500', border: 'border-l-stone-700', Icon: XCircle },
 } as const;
 
 export const FitAssessment: React.FC = () => {
@@ -37,7 +37,7 @@ export const FitAssessment: React.FC = () => {
 
     return (
         <section className="max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-cream-100 mb-2">The Fit Assessment</h2>
+            <h2 className="text-3xl font-bold text-cream-100 mb-2">The fit assessment</h2>
             <p className="text-cream-300 mb-8 max-w-xl mx-auto">
                 Paste a job description and Claude will assess it against my actual background — honestly, gaps
                 included. Powered by the same agent that answers questions above.
@@ -66,7 +66,7 @@ export const FitAssessment: React.FC = () => {
                         <button
                             onClick={runAssessment}
                             disabled={!input.trim() || status === 'loading'}
-                            className="bg-cream-100 text-nature-950 font-bold px-6 py-2 rounded-lg hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                            className="border border-accent-gold text-accent-gold font-semibold px-6 py-2 rounded-lg hover:bg-accent-gold/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                         >
                             {status === 'loading' ? (
                                 <>
@@ -106,7 +106,7 @@ export const FitAssessment: React.FC = () => {
                                 onClick={reset}
                                 className="text-xs text-stone-500 hover:text-cream-100 underline decoration-stone-700"
                             >
-                                Clear & Restart
+                                Clear & restart
                             </button>
                         </div>
                     </motion.div>
@@ -132,11 +132,11 @@ export const FitAssessment: React.FC = () => {
 
                         {result.strengths.length > 0 && (
                             <div className="mt-4">
-                                <p className="text-xs uppercase tracking-wider text-stone-500 mb-2">Where I map</p>
+                                <p className="text-xs tracking-wider text-stone-500 mb-2">Where I map</p>
                                 <ul className="space-y-1.5">
                                     {result.strengths.map((s, i) => (
                                         <li key={i} className="flex items-start gap-2 text-cream-200 text-sm">
-                                            <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                                            <CheckCircle className="w-4 h-4 text-garnet-400 mt-0.5 shrink-0" />
                                             <span>{s}</span>
                                         </li>
                                     ))}
@@ -146,7 +146,7 @@ export const FitAssessment: React.FC = () => {
 
                         {result.watchouts.length > 0 && (
                             <div className="mt-4">
-                                <p className="text-xs uppercase tracking-wider text-stone-500 mb-2">Honest watch-outs</p>
+                                <p className="text-xs tracking-wider text-stone-500 mb-2">Honest watch-outs</p>
                                 <ul className="space-y-1.5">
                                     {result.watchouts.map((w, i) => (
                                         <li key={i} className="flex items-start gap-2 text-cream-300 text-sm">
@@ -163,7 +163,7 @@ export const FitAssessment: React.FC = () => {
                                 onClick={reset}
                                 className="text-xs text-stone-500 hover:text-cream-100 underline decoration-stone-700"
                             >
-                                Clear & Restart
+                                Clear & restart
                             </button>
                         </div>
                     </motion.div>

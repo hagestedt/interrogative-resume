@@ -39,6 +39,94 @@ export const PROFILE = {
     }
 };
 
+// Top-of-page proof for a 6-second scan. Each metric is honesty-framed to match
+// messaging-spine.md (Claude rollout = 500+ in a 3,000+ person org; $1.5B owned as
+// Group PM; GTC demo built/launched in 2 weeks). "builtAt" lists EMPLOYERS only.
+export const HEADLINE = {
+    valueProp: "I lead enterprise AI implementations — and ship the production code that proves them.",
+    metrics: [
+        {
+            stat: "0 → 500+",
+            label: "active users on Claude Code",
+            context: "enterprise rollout across a 3,000+ person org (~17% adoption, ~50% of engineering)",
+        },
+        {
+            stat: "$1.5B",
+            label: "profitability lift owned at Amazon",
+            context: "as Group PM — read the P&L, built the ML negotiation system with engineering",
+        },
+        {
+            stat: "2 weeks",
+            label: "to demo RL environments at NVIDIA GTC",
+            context: "agent-powered, live human-in-the-loop demo, externally shown at GTC — now in active RFP with multiple Mag-7 customers",
+        },
+    ],
+    builtAt: ["Apple", "Amazon", "AWS", "Cisco", "Centific"],
+};
+
+// Frictionless contact + downloads, surfaced in the nav and footer.
+export const CONTACT = {
+    email: "hagestedt@gmail.com",
+    resumePdf: "/Adam-Hagestedt-Resume-2026.pdf",
+    linkedin: "https://www.linkedin.com/in/adam-hagestedt/",
+    github: "https://github.com/hagestedt",
+};
+
+export interface SelectedWorkItem {
+    title: string;
+    blurb: string;
+    tags: string[];
+    kind: 'code' | 'outcome';
+    href?: string;
+    hrefLabel?: string;
+}
+
+// Proof layer: clickable shipped code + checkable outcomes. "code" items link to
+// public GitHub; "outcome" items carry no link (confidential artifacts are not
+// hosted here — "details on request"). Wording is honesty-framed per messaging-spine.
+export const SELECTED_WORK: SelectedWorkItem[] = [
+    {
+        title: "This résumé is open source",
+        blurb: "The site you're reading — an AI-queryable résumé. React 19 + Vite + Tailwind, with Claude wired in through a Cloudflare Worker (API key server-side, per-IP rate limited). Read the code.",
+        tags: ["React 19", "Cloudflare Workers", "Claude API"],
+        kind: "code",
+        href: "https://github.com/hagestedt/interrogative-resume",
+        hrefLabel: "View source",
+    },
+    {
+        title: "AI Adoption Radar",
+        blurb: "A clean-room, full-stack adoption-observability dashboard on public data: scraper → SQLite → FastAPI → React/D3, plus an MCP server. The same architecture as the internal tooling I build — open and inspectable.",
+        tags: ["Python", "FastAPI", "D3", "MCP"],
+        kind: "code",
+        href: "https://github.com/hagestedt",
+        hrefLabel: "On GitHub",
+    },
+    {
+        title: "Enterprise AI rollout — 0 → 500+ users",
+        blurb: "Selected, deployed, and operationalized Claude Code across a 3,000+ person org via a product-agnostic 3-phase adoption playbook — then built the usage-observability tooling to prove ROI.",
+        tags: ["AI adoption", "Change management", "Observability"],
+        kind: "outcome",
+    },
+    {
+        title: "RL environments, demoed at NVIDIA GTC in 2 weeks",
+        blurb: "An agent-powered, industry-configurable reinforcement-learning human-in-the-loop demo any account executive can run live with zero setup — shown externally at GTC, now in active RFP with multiple Mag-7 customers.",
+        tags: ["Agentic AI", "RL + HITL", "0→1"],
+        kind: "outcome",
+    },
+    {
+        title: "Replaced a ~$1M/yr platform in 1.5 weeks",
+        blurb: "Killed an expensive third-party annotation tool and shipped a custom replacement decision-to-production in 1.5 weeks — by cutting every non-essential feature, with zero downtime on live projects.",
+        tags: ["Build-vs-buy", "Ruthless scope", "Shipping speed"],
+        kind: "outcome",
+    },
+    {
+        title: "$1.5B profitability platform at Amazon",
+        blurb: "As Group PM, read the P&L unit economics and designed the ML negotiation system that automated 6,000+ long-tail vendors — making un-negotiable segments profitable and killing the ones that didn't pay back.",
+        tags: ["P&L", "ML systems", "Scale"],
+        kind: "outcome",
+    },
+];
+
 export const JOBS: Job[] = [
     {
         company: "Centific",
