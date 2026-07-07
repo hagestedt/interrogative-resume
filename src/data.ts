@@ -98,14 +98,28 @@ export const SELECTED_WORK: SelectedWorkItem[] = [
         blurb: "A clean-room, full-stack adoption-observability dashboard on public data: scraper → SQLite → FastAPI → React/D3, plus an MCP server. The same architecture as the internal tooling I build — open and inspectable.",
         tags: ["Python", "FastAPI", "D3", "MCP"],
         kind: "code",
-        href: "https://github.com/hagestedt",
-        hrefLabel: "On GitHub",
+        href: "https://github.com/hagestedt/ai-adoption-radar",
+        hrefLabel: "View source",
+    },
+    {
+        title: "First platform subscription at a Mag-7 customer",
+        blurb: "Drove the go-to-market that landed Data Canvas's first-ever subscription — a one-year deal that displaced the customer's in-house annotation tooling, with their own teams adopting it for annotation and QA. Recurring-revenue proof for selling the platform, not the labor hours.",
+        tags: ["GTM", "Recurring revenue", "Platform PM"],
+        kind: "outcome",
     },
     {
         title: "Enterprise AI rollout — 0 → 500+ users",
         blurb: "Selected, deployed, and operationalized Claude Code across a 3,000+ person org via a product-agnostic 3-phase adoption playbook — then built the usage-observability tooling to prove ROI.",
         tags: ["AI adoption", "Change management", "Observability"],
         kind: "outcome",
+    },
+    {
+        title: "The 3-phase enterprise AI adoption playbook",
+        blurb: "The product-agnostic playbook behind the 500+ user rollout — prove it on one team, expand along the pull, then operationalize with observability and ROI telemetry. Written to port to any agent platform.",
+        tags: ["AI adoption", "Change management", "Playbook"],
+        kind: "outcome",
+        href: "/playbook.html",
+        hrefLabel: "Read the playbook",
     },
     {
         title: "RL environments, demoed at NVIDIA GTC in 2 weeks",
@@ -133,7 +147,7 @@ export const JOBS: Job[] = [
         role: "Senior Director → VP, Product Management",
         period: "2025–Present",
         tags: ["Innovation", "Culture Change", "AI", "Scale"],
-        summary: "Function leader for 6 AI product lines across a 3,000+ person company. Direct 4 SE team leads plus geo-led teams (Piyush, Ganesh, Ravi) across US, India, China, Singapore, EU.",
+        summary: "Function leader for 6 AI product lines across a 3,000+ person company. Direct: 4 SE team leads + ~12 pre-sales/SE ICs; geo-led teams across US, India, China, Singapore, EU.",
         highlights: [
             {
                 title: "Claude Code Enterprise — 500+ active users in 3,000+ person org",
@@ -148,15 +162,21 @@ export const JOBS: Job[] = [
                 lesson: "Shipping speed is a function of what you're willing to cut, not what you're willing to build."
             },
             {
+                title: "First Platform Subscription at a Mag-7 Customer",
+                broken: "Platform value was priced as labor hours — delivery revenue with no recurring platform line, while the customer ran its own in-house annotation tooling.",
+                fixed: "Drove the go-to-market motion that landed Data Canvas's first-ever subscription — a one-year deal that displaced the customer's in-house tooling and put their own teams onto the platform for annotation and QA.",
+                lesson: "The strongest proof of a platform thesis is a customer paying for the platform itself — not the hours behind it."
+            },
+            {
                 title: "Anti-Fraud Architecture — Killed the 21-Week Vendor Path",
-                broken: "Stalled 21-week KASM VDI negotiation for annotation-workforce anti-fraud — 7+ months in, SOW on 7th revision, no agreement, no native clipboard control.",
+                broken: "Stalled 21-week vendor VDI negotiation for annotation-workforce anti-fraud — 7+ months in, no agreement, no native clipboard control.",
                 fixed: "Authored in-house Chromium-based secure workspace architecture. Phase 1 (copy/paste blocking + analytics) in 6 weeks vs vendor's 21. Evaluated Appen, TELUS, Scale AI, Island.io, Palo Alto Prisma. Killed the vendor path.",
                 lesson: "Sunk cost is the cheapest expense if cutting it unlocks a 4x faster path."
             },
             {
                 title: "Six Product Lines, One Operator",
                 broken: "VP-level portfolio scope dropped on a Senior Director seat; the easy move would have been backfilling departing PMs.",
-                fixed: "Absorbed AIDF Platform, Data Canvas, Data Marketplace, One Data, RL Environments-as-a-Service, and OneForma. Downsized PM team through AI automation instead of backfilling. Now VP of Product Management; function leader for geo-led teams (Piyush, Ganesh, Ravi).",
+                fixed: "Absorbed AIDF Platform, Data Canvas, Data Marketplace, One Data, RL Environments-as-a-Service, and OneForma. Downsized PM team through AI automation instead of backfilling. Now VP of Product Management; function leader for geo-led teams across US, India, China, Singapore, EU.",
                 lesson: "Headcount is the lazy answer. Automation + ruthless prioritization is the leveraged one."
             },
             {
@@ -168,7 +188,7 @@ export const JOBS: Job[] = [
             {
                 title: "Agentic-by-Default Ops",
                 broken: "Teams were stuck in low-velocity meetings and manual document creation.",
-                fixed: "Pioneered internal workflows where agents generate UIs and documents on-the-fly. Built M365 AI Analyst Agent (auto-generated weekly status reports), UX Info Architect Skill for Claude, 'AI for Business Operations' training curriculum, and co-authored the Claude→JIRA auto-comment pipeline with Wen Fan.",
+                fixed: "Pioneered internal workflows where agents generate UIs and documents on-the-fly. Built M365 AI Analyst Agent (auto-generated weekly status reports), UX Info Architect Skill for Claude, 'AI for Business Operations' training curriculum, and co-authored the Claude→Jira auto-comment pipeline with an engineering lead.",
                 lesson: "Operational empathy means giving people back their time via automation."
             }
         ]

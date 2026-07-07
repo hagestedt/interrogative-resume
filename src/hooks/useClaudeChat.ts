@@ -11,7 +11,7 @@ export function useClaudeChat() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const sendMessage = useCallback(async (query: string, metadata?: any) => {
+    const sendMessage = useCallback(async (query: string, metadata?: { role?: string; company?: string }) => {
         setIsLoading(true);
         setError(null);
 
@@ -22,7 +22,7 @@ export function useClaudeChat() {
             // Convert current messages to Anthropic chat history ({ role, content }).
             // The UI uses 'model' for assistant turns; Claude expects 'assistant'.
             const history = messages.map(m => ({
-                role: m.role === 'model' ? 'assistant' : 'user',
+                role: m.role === 'model' ? ('assistant' as const) : ('user' as const),
                 content: m.text,
             }));
 
@@ -32,7 +32,7 @@ export function useClaudeChat() {
             if (result.error) {
                 setError("AI Connection Issue");
             }
-        } catch (err) {
+        } catch {
             setError("Failed to send message");
             setMessages(prev => [...prev, { role: 'model', text: "Sorry, something went wrong." }]);
         } finally {

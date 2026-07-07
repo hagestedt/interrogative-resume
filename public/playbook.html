@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#141215" />
+
+    <title>The 3-phase enterprise AI adoption playbook — Adam Hagestedt</title>
+    <meta name="description" content="The product-agnostic playbook behind a 0 → 500+ user AI rollout in a 3,000+ person org: prove it on one team, expand along the pull, operationalize with observability and ROI telemetry." />
+    <link rel="canonical" href="https://hagestedt.com/playbook.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hagestedt.com/playbook.html" />
+    <meta property="og:title" content="The 3-phase enterprise AI adoption playbook" />
+    <meta property="og:description" content="Prove it on one team. Expand along the pull. Operationalize with observability. The playbook behind a 0 → 500+ user rollout — written to port to any agent platform." />
+    <meta property="og:image" content="https://hagestedt.com/og-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+        :root {
+            --canvas: #141215;
+            --surface: #1C1A1E;
+            --border: #322E34;
+            --text: #F6E9EC;
+            --muted: #B8AEB2;
+            --subtle: #8E8489;
+            --brand: #C66B7C;
+            --brand-strong: #D99FAD;
+            --tag-bg: #2A1A20;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--canvas);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        header.site { padding: 28px 0; border-bottom: 1px solid var(--border); }
+        .wordmark {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .wordmark .dot { color: var(--brand); }
+        .site-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+        .site-row a.back { color: var(--brand); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .site-row a.back:hover { text-decoration: underline; }
+
+        .hero { padding: 56px 0 40px; }
+        .eyebrow { font-size: 13px; font-weight: 600; color: var(--brand); letter-spacing: 0.02em; margin-bottom: 12px; }
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: clamp(30px, 5vw, 42px);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+        }
+        .lede { font-size: 18px; color: var(--muted); max-width: 640px; }
+        .provenance {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+        .stat strong { display: block; color: var(--text); font-size: 16px; font-weight: 600; }
+
+        main { padding-bottom: 24px; }
+        .principle {
+            border-left: 2px solid var(--brand);
+            padding: 4px 0 4px 20px;
+            margin: 40px 0;
+            font-family: 'Fraunces', serif;
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1.45;
+            color: var(--text);
+        }
+
+        .phase {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 24px 0;
+        }
+        .phase-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+        .phase-num {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--brand);
+            white-space: nowrap;
+        }
+        .phase h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+        .phase .window { font-size: 13px; color: var(--subtle); margin-bottom: 16px; }
+        .phase p.intro { color: var(--muted); margin-bottom: 16px; }
+        .phase ul { list-style: none; }
+        .phase li {
+            padding: 9px 0 9px 22px;
+            position: relative;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 15px;
+        }
+        .phase li::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 18px;
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--brand);
+        }
+        .phase li strong { color: var(--text); font-weight: 600; }
+        .gate {
+            margin-top: 18px;
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--brand-strong);
+        }
+        .gate strong { color: var(--brand-strong); }
+
+        .failure {
+            margin: 40px 0;
+        }
+        .failure h2 { font-size: 24px; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.01em; }
+        .failure p { color: var(--muted); margin-bottom: 12px; }
+
+        footer.site {
+            border-top: 1px solid var(--border);
+            margin-top: 24px;
+            padding: 32px 0 48px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+        footer.site a { color: var(--brand); text-decoration: none; font-weight: 500; }
+        footer.site a:hover { text-decoration: underline; }
+        .foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: baseline; }
+    </style>
+</head>
+<body>
+    <header class="site">
+        <div class="wrap site-row">
+            <a class="wordmark" href="https://hagestedt.com/">Adam Hagestedt<span class="dot">.</span></a>
+            <a class="back" href="https://hagestedt.com/">← back to the résumé</a>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <section class="hero">
+            <div class="eyebrow">Field guide · enterprise AI adoption</div>
+            <h1>The 3-phase adoption playbook</h1>
+            <p class="lede">
+                Most enterprise AI rollouts stall at proof-of-concept: the licenses get bought, a pilot
+                gets announced, and nothing changes about how work is done. This is the playbook I used
+                to take one agentic coding tool from 0 to 500+ active users in a 3,000+ person
+                organization — written product-agnostic, because the playbook is the durable asset, not
+                the tool.
+            </p>
+            <div class="provenance">
+                <div class="stat"><strong>0 → 500+</strong>active users</div>
+                <div class="stat"><strong>~17%</strong>of a 3,000+ person org</div>
+                <div class="stat"><strong>~50%</strong>of engineering</div>
+                <div class="stat"><strong>Any platform</strong>ports to any agent tool</div>
+            </div>
+        </section>
+
+        <main>
+            <div class="principle">
+                Prove the model on your own team first, then make adoption frictionless.
+                Evangelism without proof doesn't scale.
+            </div>
+
+            <section class="phase">
+                <div class="phase-head"><span class="phase-num">Phase 1</span><h2>Prove</h2></div>
+                <div class="window">Weeks 0–4 · one team, real work, visible wins</div>
+                <p class="intro">
+                    The goal of Phase 1 is not adoption — it's an existence proof inside your own walls
+                    that leadership can't argue with and neighboring teams will envy.
+                </p>
+                <ul>
+                    <li><strong>Pick one team with real deliverables,</strong> not an innovation lab. The proof must happen on work someone is already accountable for, or it proves nothing.</li>
+                    <li><strong>Pair an executive sponsor with a working operator.</strong> The sponsor clears blockers; the operator uses the tool daily and ships with it. If the senior owner doesn't personally use it, the org notices.</li>
+                    <li><strong>Instrument before/after on a small number of workflows</strong> — cycle time, review turnaround, output shipped. Two or three honest numbers beat a wall of vanity metrics.</li>
+                    <li><strong>Ship something visible in the first two weeks.</strong> A real artifact the rest of the org can see and touch converts more people than any deck.</li>
+                    <li><strong>Start the security review now,</strong> not at rollout. The security gate is the single most common place enterprise AI adoption dies — clearing it is Phase 1 work even though its payoff is Phase 2.</li>
+                </ul>
+                <div class="gate"><strong>Gate to Phase 2:</strong> a team lead who would fight to keep the tool, and one before/after number you'd defend in front of the CFO.</div>
+            </section>
+
+            <section class="phase">
+                <div class="phase-head"><span class="phase-num">Phase 2</span><h2>Expand</h2></div>
+                <div class="window">Months 1–3 · follow the pull, remove the friction</div>
+                <p class="intro">
+                    Expansion works when teams ask to join. Push-based rollouts create compliance
+                    theater; pull-based rollouts create users.
+                </p>
+                <ul>
+                    <li><strong>Expand along the pull.</strong> Publicize the Phase 1 wins internally, then onboard the teams that raise their hands first — they become the next proof points.</li>
+                    <li><strong>Name a champion per function.</strong> Adoption spreads peer-to-peer inside a discipline; a champion who ships with the tool beats a central enablement team broadcasting at everyone.</li>
+                    <li><strong>Make onboarding frictionless:</strong> licenses pre-provisioned, access pre-approved, a 30-minute setup path, office hours, and working examples from their own function — not generic demos.</li>
+                    <li><strong>Build function-specific playbooks.</strong> "How engineering uses it" and "how operations uses it" are different documents. Write them from real usage, not speculation.</li>
+                    <li><strong>Clear the security and compliance review completely</strong> — data handling, retention, acceptable use. One published, approved policy unlocks every conservative team at once.</li>
+                    <li><strong>Let the laggards lag.</strong> Chasing the resistant 20% in Phase 2 burns the energy you need for the willing 80%.</li>
+                </ul>
+                <div class="gate"><strong>Gate to Phase 3:</strong> multiple functions using the tool on real work without your involvement, and demand arriving faster than you're recruiting it.</div>
+            </section>
+
+            <section class="phase">
+                <div class="phase-head"><span class="phase-num">Phase 3</span><h2>Operationalize</h2></div>
+                <div class="window">Month 3 onward · make it survivable without the evangelist</div>
+                <p class="intro">
+                    A rollout that depends on its champion is a pilot that hasn't admitted it yet.
+                    Phase 3 turns adoption into infrastructure.
+                </p>
+                <ul>
+                    <li><strong>Build usage observability.</strong> You cannot govern, defend, or expand what you can't see. Instrument who uses the tool, how often, and on what — I built this layer myself (scraper → SQLite → FastAPI → React/D3) rather than wait for a BI project.</li>
+                    <li><strong>Report ROI in operator terms:</strong> hours returned, cycle-time deltas, output per team — laddered to the business metrics leadership already tracks. Adoption percentage is an input, not the result.</li>
+                    <li><strong>Set the policy and guardrails in writing:</strong> what's encouraged, what's reviewed, what's off-limits. Ambiguity re-freezes the conservative middle of the org.</li>
+                    <li><strong>Govern cost per outcome, not cost alone.</strong> Spend that returns hours is a bargain; unexamined spend is how programs get cut in the next budget cycle.</li>
+                    <li><strong>Institutionalize the enablement:</strong> training curriculum, onboarding for new hires, champions with named backfills — so the capability survives any single person leaving.</li>
+                </ul>
+                <div class="gate"><strong>Done looks like:</strong> adoption still growing in a quarter where you personally did nothing to push it.</div>
+            </section>
+
+            <section class="failure">
+                <h2>The failure modes this is built against</h2>
+                <p>
+                    <strong>Pilot purgatory</strong> — a proof-of-concept with no accountable deliverable, quietly renewed
+                    forever. <strong>The security stall</strong> — review started at rollout instead of day one, freezing the
+                    program for a quarter. <strong>Evangelism without proof</strong> — roadshows before an internal team has
+                    a defensible win. <strong>Mandate-driven adoption</strong> — usage dashboards that measure logins while
+                    work happens elsewhere. Each phase above exists because I watched one of these kill a rollout.
+                </p>
+            </section>
+
+            <div class="principle">
+                The playbook is product-agnostic by design: the tool in my rollout happened to be
+                Claude Code, but the same three phases port to any agent platform. Tools change
+                quarterly; the adoption physics don't.
+            </div>
+        </main>
+    </div>
+
+    <footer class="site">
+        <div class="wrap foot-row">
+            <div>
+                Written by <a href="https://hagestedt.com/">Adam Hagestedt</a> — VP of Product Management, AI implementation.
+                The numbers above are from the rollout described on the résumé; the long version is available on request.
+            </div>
+            <div><a href="mailto:hagestedt@gmail.com">hagestedt@gmail.com</a></div>
+        </div>
+    </footer>
+</body>
+</html>

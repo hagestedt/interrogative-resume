@@ -1,14 +1,22 @@
 /**
- * Cloudflare Worker: resume Q&A proxy to Claude Sonnet.
+ * Cloudflare Worker: resume Q&A proxy to Claude.
  *
  * The Anthropic API key is stored as the ANTHROPIC_API_KEY *secret* on this Worker
  * and is never sent to the browser. The static site (hagestedt.com) POSTs the
  * conversation to this Worker, which adds the key and calls the Anthropic API.
  *
+ * The system prompts are assembled HERE (from ../src/lib/persona.ts), not in the
+ * browser: the client sends only { mode: "chat" | "fit", messages }. A client-
+ * supplied `system` field is ignored, so the endpoint cannot be repurposed as a
+ * general-purpose proxy with an arbitrary system prompt — it only ever talks
+ * about Adam's résumé. Per-message and message-count caps bound input cost.
+ *
  * Set the secret with:
  *   npm run worker:secret        (= wrangler secret put ANTHROPIC_API_KEY)
  * or in the dashboard: Workers & Pages > (this worker) > Settings > Variables and Secrets.
  */
+
+import { GENERATED_SYSTEM_PROMPT, FIT_SYSTEM_PROMPT } from "../src/lib/persona";
 
 interface RateLimit {
   limit(options: { key: string }): Promise<{ success: boolean }>;
@@ -21,9 +29,17 @@ interface Env {
 }
 
 // Model is forced server-side so the endpoint can't be repurposed onto a pricier model.
-const MODEL = "claude-sonnet-4-6";
+const MODEL = "claude-fable-5";
 // Hard cap on output tokens.
 const MAX_TOKENS = 500;
+
+// Server-side prompt selection + input bounds per mode. "chat" is the résumé
+// Q&A; "fit" scores a pasted job description (longer single message allowed).
+const MODES = {
+  chat: { system: GENERATED_SYSTEM_PROMPT, maxMessages: 20, maxChars: 4_000 },
+  fit: { system: FIT_SYSTEM_PROMPT, maxMessages: 2, maxChars: 20_000 },
+} as const;
+type Mode = keyof typeof MODES;
 
 // Browser origins allowed to call this Worker.
 const ALLOWED_ORIGINS = [
@@ -68,8 +84,8 @@ export default {
     }
 
     // Best-effort origin allowlist: blocks other sites' browsers. A non-browser
-    // client can omit or spoof Origin, which is why the rate limit below is the
-    // real abuse protection.
+    // client can omit or spoof Origin, which is why the rate limit below and the
+    // server-pinned system prompt are the real abuse protection.
     if (origin && !ALLOWED_ORIGINS.includes(origin)) {
       return jsonResponse({ error: "Forbidden" }, 403, origin);
     }
@@ -94,8 +110,8 @@ export default {
     }
 
     let payload: {
-      system?: string;
-      messages?: Array<{ role: string; content: string }>;
+      mode?: string;
+      messages?: Array<{ role?: string; content?: string }>;
     };
     try {
       payload = await request.json();
@@ -103,11 +119,37 @@ export default {
       return jsonResponse({ error: "Invalid JSON body" }, 400, origin);
     }
 
-    const messages = Array.isArray(payload.messages)
-      ? payload.messages.slice(-20)
+    // Default to "chat" so clients deployed before the mode field existed keep
+    // working during a deploy window. Any client-sent `system` is ignored.
+    const mode: Mode = payload.mode === "fit" ? "fit" : "chat";
+    const { system, maxMessages, maxChars } = MODES[mode];
+
+    const rawMessages = Array.isArray(payload.messages)
+      ? payload.messages.slice(-maxMessages)
       : [];
-    if (messages.length === 0) {
+    if (rawMessages.length === 0) {
       return jsonResponse({ error: "No messages provided" }, 400, origin);
+    }
+
+    // Validate shape + bound input size (input tokens are the uncapped cost
+    // otherwise — MAX_TOKENS only bounds output).
+    const messages: Array<{ role: string; content: string }> = [];
+    for (const m of rawMessages) {
+      if (
+        !m ||
+        (m.role !== "user" && m.role !== "assistant") ||
+        typeof m.content !== "string"
+      ) {
+        return jsonResponse({ error: "Malformed message" }, 400, origin);
+      }
+      if (m.content.length > maxChars) {
+        return jsonResponse(
+          { error: `Message too long (max ${maxChars} characters)` },
+          413,
+          origin,
+        );
+      }
+      messages.push({ role: m.role, content: m.content });
     }
 
     const upstream = await fetch("https://api.anthropic.com/v1/messages", {
@@ -120,7 +162,7 @@ export default {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
-        system: payload.system ?? "",
+        system,
         messages,
       }),
     });
