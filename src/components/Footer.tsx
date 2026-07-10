@@ -57,6 +57,12 @@ export const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
                     </button>
                 </div>
 
+                <div className="mt-8 text-sm font-medium text-cream-300">
+                    <a href="/writing/" className="hover:text-cream-100 transition-colors">
+                        Writing — the Thoughtful interfaces essays
+                    </a>
+                </div>
+
                 <p className="text-stone-600 text-sm mt-8">
                     &copy; {new Date().getFullYear()} Adam Hagestedt. Built with agentic AI —{' '}
                     <a
