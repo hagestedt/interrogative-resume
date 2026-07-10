@@ -76,7 +76,7 @@ export interface SelectedWorkItem {
     title: string;
     blurb: string;
     tags: string[];
-    kind: 'code' | 'outcome';
+    kind: 'code' | 'outcome' | 'writing';
     href?: string;
     hrefLabel?: string;
 }
@@ -120,6 +120,14 @@ export const SELECTED_WORK: SelectedWorkItem[] = [
         kind: "outcome",
         href: "/playbook.html",
         hrefLabel: "Read the playbook",
+    },
+    {
+        title: "Thoughtful interfaces — nine essays on the end of UI",
+        blurb: "Nine essays on what agentic adoption does to enterprise buying, deployment, architecture, product execution, UX, and roles — the end-of-UI thesis this résumé is built on, argued in public.",
+        tags: ["Essays", "Agentic UX", "Enterprise AI"],
+        kind: "writing",
+        href: "/writing/",
+        hrefLabel: "Read the series",
     },
     {
         title: "RL environments, demoed at NVIDIA GTC in 2 weeks",

@@ -37,6 +37,7 @@ function App() {
             <button onClick={() => scrollToSection('resume')} className="hover:text-cream-100 transition-colors">Resume</button>
             <button onClick={() => scrollToSection('skills')} className="hover:text-cream-100 transition-colors">Skills</button>
             <button onClick={() => scrollToSection('fit')} className="hover:text-cream-100 transition-colors">Fit check</button>
+            <a href="/writing/" className="hover:text-cream-100 transition-colors">Writing</a>
           </div>
 
           <div className="flex items-center gap-2 md:gap-3">

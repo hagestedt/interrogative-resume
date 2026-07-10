@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Code2, Award } from 'lucide-react';
+import { ExternalLink, Code2, Award, PenLine } from 'lucide-react';
 import { SELECTED_WORK } from '../data';
 
 export const SelectedWork: React.FC = () => {
@@ -7,7 +7,7 @@ export const SelectedWork: React.FC = () => {
         <section className="max-w-5xl mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold text-cream-100 text-center">Selected work</h2>
             <p className="text-cream-300 text-center mt-2 mb-10 max-w-2xl mx-auto">
-                Proof, not adjectives — shipped code you can read and outcomes you can check.
+                Proof, not adjectives — shipped code you can read, outcomes you can check, and the thinking behind them.
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -19,11 +19,13 @@ export const SelectedWork: React.FC = () => {
                         <div className="flex items-center gap-2 mb-3">
                             {w.kind === 'code' ? (
                                 <Code2 className="w-4 h-4 text-accent-sage" />
+                            ) : w.kind === 'writing' ? (
+                                <PenLine className="w-4 h-4 text-accent-gold" />
                             ) : (
                                 <Award className="w-4 h-4 text-accent-gold" />
                             )}
                             <span className="text-[11px] font-bold tracking-wide text-stone-500">
-                                {w.kind === 'code' ? 'Shipped code' : 'Outcome'}
+                                {w.kind === 'code' ? 'Shipped code' : w.kind === 'writing' ? 'Writing' : 'Outcome'}
                             </span>
                         </div>
 
