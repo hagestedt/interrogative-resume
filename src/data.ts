@@ -16,9 +16,10 @@ export interface Job {
 
 export const PROFILE = {
     name: "Adam Christopher Hagestedt",
-    title: "VP of Product Management | AI & Agentic Systems",
+    title: "VP of Product Management | AI Transformation & Agentic Systems",
     superpowers: [
         "Business + Engineering Bridge (P&L instinct + hands-on build)",
+        "Enterprise Automation (manual ops → agentic systems)",
         "Ruthless Prioritization (ships by killing scope)",
         "AI Organizational Transition (Education & Rollout)",
         "Synthesis of Disparate Data (1+1=3)"
@@ -27,6 +28,7 @@ export const PROFILE = {
     skills: {
         strong: [
             "Business + Engineering Bridge (Gonzaga MBA + Portland State Finance + hands-on Python/FastAPI/React)",
+            "Enterprise Automation (manual ops → agentic systems, measured in the P&L)",
             "Agentic AI Strategy",
             "SaaS Platform Engineering",
             "Marketplace Economics",
@@ -34,7 +36,7 @@ export const PROFILE = {
             "Crisis Management",
             "Synthesis"
         ],
-        moderate: ["Traditional UI/UX Design", "Enterprise Ops Transition (Manual -> AI)", "Process Optimization"],
+        moderate: ["Traditional UI/UX Design", "Process Optimization (when it can't be automated)"],
         gaps: ["B2C Product Growth (Consumer Social)", "Mobile Gaming", "Pure B2C Application Building"]
     }
 };
@@ -43,7 +45,7 @@ export const PROFILE = {
 // messaging-spine.md (Claude rollout = 500+ in a 3,000+ person org; $1.5B owned as
 // Group PM; GTC demo built/launched in 2 weeks). "builtAt" lists EMPLOYERS only.
 export const HEADLINE = {
-    valueProp: "I lead enterprise AI implementations — and ship the production code that proves them.",
+    valueProp: "I turn manual enterprise operations into AI-run systems, and I ship the production code that proves them.",
     metrics: [
         {
             stat: "0 → 500+",
@@ -52,8 +54,8 @@ export const HEADLINE = {
         },
         {
             stat: "$1.5B",
-            label: "profitability lift owned at Amazon",
-            context: "as Group PM — read the P&L, built the ML negotiation system with engineering",
+            label: "lift from automating vendor negotiations at Amazon",
+            context: "as Group PM — read the P&L, automated 6,000+ long-tail negotiations with ML, killed segments that didn't pay back",
         },
         {
             stat: "2 weeks",
@@ -111,6 +113,12 @@ export const SELECTED_WORK: SelectedWorkItem[] = [
         title: "Enterprise AI rollout — 0 → 500+ users",
         blurb: "Selected, deployed, and operationalized Claude Code across a 3,000+ person org via a product-agnostic 3-phase adoption playbook — then built the usage-observability tooling to prove ROI.",
         tags: ["AI adoption", "Change management", "Observability"],
+        kind: "outcome",
+    },
+    {
+        title: "Agent-run business operations",
+        blurb: "Rebuilt my own org's operating layer so agents do the manual work: an M365 agent auto-generates weekly status reports, a co-built Claude→Jira pipeline runs daily in production, and operational analytics are AI-generated instead of hand-assembled. Absorbed a departing VP's portfolio with zero backfill while increasing products shipped.",
+        tags: ["Enterprise automation", "Agentic ops", "ROI"],
         kind: "outcome",
     },
     {

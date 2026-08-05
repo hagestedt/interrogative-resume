@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 that hides text) so it is instantly legible to humans and present in
                 the prerendered HTML that crawlers / ATS / unfurlers read. */}
             <p className="text-sm font-semibold tracking-wide text-cream-400 mb-4">
-                AI-implementation executive
+                AI-transformation executive
             </p>
             <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tight text-cream-100">
                 Adam Hagestedt<span className="text-accent-gold">.</span>

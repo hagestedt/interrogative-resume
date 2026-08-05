@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta name="theme-color" content="#141215" />
+
+<title>Chat, Cowork, and Code — a field guide to Claude · Adam Hagestedt</title>
+<meta name="description" content="A practical field guide to getting started with Claude: when to use Chat, Cowork, or Code, what Projects/Artifacts/Scheduling/Customize actually do, and the two connectors worth installing first." />
+<link rel="canonical" href="https://hagestedt.com/writing/chat-cowork-and-code/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hagestedt.com/writing/chat-cowork-and-code/" />
+<meta property="og:title" content="Chat, Cowork, and Code — a field guide to Claude" />
+<meta property="og:description" content="A practical field guide to getting started with Claude: when to use Chat, Cowork, or Code, what Projects/Artifacts/Scheduling/Customize actually do, and the two connectors worth installing first." />
+<meta property="og:image" content="https://hagestedt.com/og-card.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+  :root {
+    --garnet-100: #F7E4E8;
+    --garnet-300: #D99FAD;
+    --garnet-400: #C66B7C;
+    --garnet-500: #A23B50;
+    --garnet-600: #7E2A3A;
+    --garnet-800: #5A1A28;
+
+    --ink-50:  #FAFAFA;
+    --ink-100: #F4F4F5;
+    --ink-200: #E4E4E7;
+    --ink-500: #71717A;
+    --ink-600: #52525B;
+    --ink-900: #18181B;
+    --ink-950: #141215;
+
+    --canvas: #FFFFFF;
+    --surface: var(--ink-50);
+    --surface-2: var(--ink-100);
+    --border: var(--ink-200);
+    --text: var(--ink-900);
+    --text-muted: var(--ink-600);
+    --text-subtle: var(--ink-500);
+
+    --brand: var(--garnet-600);
+    --brand-bright: var(--garnet-500);
+    --brand-tint: var(--garnet-100);
+    --brand-tint-text: var(--garnet-800);
+    --on-brand: #FFFFFF;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+    --radius: 8px;
+    --radius-lg: 12px;
+    --nav-bg: rgba(255,255,255,0.86);
+  }
+
+  .dark {
+    --canvas: var(--ink-950);
+    --surface: #1C1A1E;
+    --surface-2: #232026;
+    --border: #322E34;
+    --text: #F6E9EC;
+    --text-muted: #B8AEB2;
+    --text-subtle: #8C8388;
+
+    --brand: var(--garnet-400);
+    --brand-bright: var(--garnet-300);
+    --brand-tint: #2A1A20;
+    --brand-tint-text: var(--garnet-300);
+    --on-brand: #2A0E15;
+    --nav-bg: rgba(20,18,21,0.86);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+      --canvas: var(--ink-950);
+      --surface: #1C1A1E;
+      --surface-2: #232026;
+      --border: #322E34;
+      --text: #F6E9EC;
+      --text-muted: #B8AEB2;
+      --text-subtle: #8C8388;
+
+      --brand: var(--garnet-400);
+      --brand-bright: var(--garnet-300);
+      --brand-tint: #2A1A20;
+      --brand-tint-text: var(--garnet-300);
+      --on-brand: #2A0E15;
+      --nav-bg: rgba(20,18,21,0.86);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--canvas);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 0 24px 72px; }
+
+  /* ---------- Topbar ---------- */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 0 0;
+  }
+  .monogram {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--brand); color: var(--on-brand);
+    font-family: var(--font-sans); font-weight: 600; font-size: 14px;
+    text-decoration: none;
+  }
+  .monogram:hover { text-decoration: none; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .back-link { font-size: 13px; font-weight: 500; color: var(--brand); }
+  .toggle {
+    font-family: var(--font-sans); font-size: 13px; color: var(--text-muted);
+    background: transparent; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 6px 12px; cursor: pointer;
+  }
+  .toggle:hover { background: var(--surface-2); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 32px 0 8px; }
+  .kicker {
+    font-size: 13px; color: var(--text-subtle); font-weight: 500;
+    margin: 0 0 10px;
+  }
+  h1.title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(30px, 4.4vw, 44px);
+    line-height: 1.14;
+    color: var(--text);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .byline {
+    font-size: 14px; color: var(--text-subtle); margin-top: 12px;
+  }
+  .byline .dot { color: var(--brand); }
+  .lede {
+    font-size: 18px; color: var(--text-muted); max-width: 62ch;
+    margin: 18px 0 0;
+  }
+
+  /* ---------- Sticky nav ---------- */
+  .toc-wrap {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  .toc {
+    max-width: 760px; margin: 0 auto; padding: 0 24px;
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc a {
+    flex: 0 0 auto; font-size: 13px; font-weight: 500; color: var(--text-subtle);
+    padding: 14px 12px; white-space: nowrap; border-bottom: 2px solid transparent;
+  }
+  .toc a:hover { color: var(--text); text-decoration: none; }
+  .toc a.active { color: var(--brand); border-bottom-color: var(--brand); }
+
+  /* ---------- Sections ---------- */
+  section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 28px; }
+  .kicker.small { margin-bottom: 8px; }
+  h2.title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--text);
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .dek { font-size: 16px; color: var(--text-muted); margin: 0; max-width: 62ch; }
+
+  /* ---------- Icons ---------- */
+  .icon-circle {
+    flex: 0 0 auto; width: 40px; height: 40px; border-radius: 999px;
+    background: var(--brand-tint);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-circle svg { width: 20px; height: 20px; color: var(--brand); }
+
+  /* ---------- Feature grid / cards ---------- */
+  .feature-grid { display: grid; gap: 16px; }
+  .feature-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .feature-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 700px) {
+    .feature-grid.cols-3, .feature-grid.cols-2 { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 20px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .card.feature { border-left: 2px solid var(--brand); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+  .feature-row { display: flex; gap: 14px; align-items: flex-start; }
+  .card h3 {
+    font-size: 16px; font-weight: 600; color: var(--text); margin: 0 0 4px;
+  }
+  .card p { font-size: 14.5px; color: var(--text-muted); margin: 0; }
+  .card p + p { margin-top: 8px; }
+  .example { font-size: 13.5px; color: var(--text-subtle); font-style: italic; margin: 8px 0 0; }
+  .rule-line {
+    font-size: 14.5px; color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 18px; margin-top: 22px;
+  }
+  .rule-line strong { font-weight: 600; }
+
+  /* ---------- Compare table ---------- */
+  .table-scroll { overflow-x: auto; margin-top: 6px; }
+  table.compare { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 540px; }
+  table.compare th, table.compare td {
+    text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  table.compare th {
+    font-size: 12px; font-weight: 500; color: var(--text-subtle); background: var(--surface-2);
+  }
+  table.compare th:first-child, table.compare td:first-child {
+    color: var(--text-subtle); width: 25%;
+  }
+
+  /* ---------- Insight callout ---------- */
+  .insight {
+    background: var(--surface); border-left: 2px solid var(--brand);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; margin-top: 24px;
+  }
+  .insight svg { flex: 0 0 auto; width: 18px; height: 18px; color: var(--brand); margin-top: 2px; }
+  .insight p { margin: 0; font-size: 14.5px; color: var(--text); }
+  .insight strong { font-weight: 600; }
+
+  /* ---------- Steps ---------- */
+  .steps { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .steps li { display: flex; gap: 12px; align-items: flex-start; font-size: 14.5px; }
+  .step-num {
+    flex: 0 0 auto; width: 24px; height: 24px; border-radius: 999px;
+    background: var(--brand); color: var(--on-brand);
+    font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Tag ---------- */
+  .tag {
+    display: inline-block; background: var(--brand-tint); color: var(--brand-tint-text);
+    font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 999px; margin-top: 4px;
+  }
+
+  code {
+    font-family: var(--font-mono); font-size: 0.85em; background: var(--surface-2);
+    border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; color: var(--text);
+  }
+
+  footer {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-subtle);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<svg class="visually-hidden" aria-hidden="true">
+  <defs>
+    <g id="i-chat" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9.8L5 19.5v-3.6A1.5 1.5 0 0 1 4 14.4V5.5Z"/>
+    </g>
+    <g id="i-cowork" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="4"/>
+      <path d="M10 8.7v6.6l6-3.3-6-3.3Z" fill="currentColor" stroke="none"/>
+    </g>
+    <g id="i-code" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 8 4.5 12 9 16"/>
+      <path d="M15 8l4.5 4-4.5 4"/>
+    </g>
+    <g id="i-folder" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h4l2 2h7A1.5 1.5 0 0 1 20 9.5v8A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5v-10Z"/>
+    </g>
+    <g id="i-artifact" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="5" width="16" height="14" rx="2"/>
+      <path d="M4 9.2h16"/>
+    </g>
+    <g id="i-clock" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8"/>
+      <path d="M12 7.5V12l3.2 2"/>
+    </g>
+    <g id="i-sliders" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="5" y1="7" x2="19" y2="7"/><circle cx="9" cy="7" r="1.8" fill="var(--surface)"/>
+      <line x1="5" y1="12" x2="19" y2="12"/><circle cx="15" cy="12" r="1.8" fill="var(--surface)"/>
+      <line x1="5" y1="17" x2="19" y2="17"/><circle cx="11" cy="17" r="1.8" fill="var(--surface)"/>
+    </g>
+    <g id="i-layers" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M12 4.2 19 8l-7 3.8L5 8l7-3.8Z"/>
+      <path d="M5.3 12 12 15.8 18.7 12"/>
+      <path d="M5.3 16 12 19.8 18.7 16"/>
+    </g>
+    <g id="i-plug" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3.2v5M15 3.2v5"/>
+      <path d="M7 8.2h10v2.8a5 5 0 0 1-10 0V8.2Z"/>
+      <path d="M12 16v4.8"/>
+    </g>
+    <g id="i-package" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3 20 7.3v9.4L12 21l-8-4.3V7.3L12 3Z"/>
+      <path d="M4.3 7.3 12 11.6l7.7-4.3"/>
+      <path d="M12 11.6V21"/>
+    </g>
+    <g id="i-mail" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="6" width="16" height="12" rx="1.6"/>
+      <path d="M4.6 7 12 13l7.4-6"/>
+    </g>
+    <g id="i-ticket" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1.1a1.7 1.7 0 0 0 0 3.3V15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1.6a1.7 1.7 0 0 0 0-3.3V9Z"/>
+      <path d="M14 7.3v9.4" stroke-dasharray="2 2.4"/>
+    </g>
+    <g id="i-check" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12.5 9.5 17 19 7"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="page">
+
+  <div class="topbar">
+    <a class="monogram" href="https://hagestedt.com/" aria-label="Adam Hagestedt">AH</a>
+    <div class="topbar-right">
+      <a class="back-link" href="/writing/">&larr; back to writing</a>
+      <button class="toggle" id="theme-toggle" aria-label="Toggle dark mode">Toggle theme</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <p class="kicker">A field guide</p>
+    <h1 class="title">Chat, Cowork, and Code — a new user's guide to Claude</h1>
+    <p class="byline">Adam Hagestedt<span class="dot"> · </span>August 2026</p>
+    <p class="lede">Everything you need to get set up and start using Claude the right way — from your first sign-in to the two connectors worth installing in week one.</p>
+  </header>
+
+  <div class="toc-wrap">
+    <nav class="toc" id="toc">
+      <a href="#setup">Setup</a>
+      <a href="#pick">Chat vs. Cowork vs. Code</a>
+      <a href="#deepdive">Cowork vs. Code</a>
+      <a href="#basics">The basics</a>
+      <a href="#customize">Inside Customize</a>
+      <a href="#install">Connect these two</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <section id="setup">
+      <div class="section-head">
+        <p class="kicker small">1 &middot; Setup</p>
+        <h2 class="title">Get signed in and set up</h2>
+        <p class="dek">Most of this is just picking the right app for the work you're doing — signing in itself only takes a minute.</p>
+      </div>
+      <ol class="steps">
+        <li><span class="step-num">1</span><span>Sign in at <code>claude.ai</code> (or open the Claude desktop app) using your work email. If your employer has a paid plan you're probably already provisioned — either way, keep company data out of a personal account.</span></li>
+        <li><span class="step-num">2</span><span>Install the <strong>Claude desktop app</strong> (Mac or Windows). This is what unlocks Cowork's full local file and browser access on your machine — the web version alone won't give you that.</span></li>
+        <li><span class="step-num">3</span><span>Optional: install the <strong>Claude mobile app</strong> so you can check in on a running Cowork task, or review something it finished, from your phone.</span></li>
+        <li><span class="step-num">4</span><span>No license yet, or something looks locked or missing? Check with whoever administers Claude at your organization — most gaps are a provisioning fix, not a dead end.</span></li>
+      </ol>
+    </section>
+
+    <section id="pick">
+      <div class="section-head">
+        <p class="kicker small">2 &middot; Three ways to work with Claude</p>
+        <h2 class="title">Chat, Cowork, or Code — how to pick</h2>
+        <p class="dek">One assistant, three modes. Pick based on what you want back, not which one sounds most advanced.</p>
+      </div>
+      <div class="feature-grid cols-3">
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-chat"/></svg></div>
+          <div>
+            <h3>Chat</h3>
+            <p>Ask a question, get an answer — one message at a time. Best for a fast draft, an explanation, or thinking something through together.</p>
+            <p class="example">"Summarize this contract." "Draft a reply to this email." "Explain what's driving this number."</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-cowork"/></svg></div>
+          <div>
+            <h3>Cowork</h3>
+            <p>Describe an outcome and Claude goes and does it — planning the steps, working across real files and apps, and checking in as it goes.</p>
+            <p class="example">"Reconcile these three trackers into one." "Pull last week's messages into a status summary." "Reorganize this shared folder."</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-code"/></svg></div>
+          <div>
+            <h3>Code</h3>
+            <p>Lives right in the Claude desktop app too — its own tab next to Chat and Cowork — as well as the terminal and any IDE. Built for engineers working inside a codebase; most non-engineering roles won't touch this day to day.</p>
+            <p class="example">"Fix this failing test." "Add an endpoint." "Review this pull request."</p>
+          </div>
+        </div>
+      </div>
+      <p class="rule-line">Rule of thumb: a quick question is <strong>Chat</strong>. A job you'd otherwise hand to an assistant is <strong>Cowork</strong>. Working inside a codebase is <strong>Code</strong>.</p>
+    </section>
+
+    <section id="deepdive">
+      <div class="section-head">
+        <p class="kicker small">3 &middot; Cowork vs. Code</p>
+        <h2 class="title">Same engine, two very different jobs</h2>
+        <p class="dek">Cowork and Code can look similar from a distance — both act autonomously, both take real actions. Here's where they actually diverge.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="compare">
+          <thead>
+            <tr><th></th><th>Cowork</th><th>Code</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Built for</td><td>Business &amp; knowledge workers — anyone managing files, folders, and everyday apps</td><td>Software engineers — anyone working inside a codebase</td></tr>
+            <tr><td>Where it lives</td><td>Claude desktop app, plus web and mobile</td><td>Its own tab in the Claude desktop app, plus the terminal and any IDE</td></tr>
+            <tr><td>Setup</td><td>None — sign in and start a task</td><td>Install the CLI, configure it, run it from your project</td></tr>
+            <tr><td>What it touches</td><td>Your local files/folders, connected apps, and a sandboxed browser</td><td>Your source code, git history, and dev tools</td></tr>
+            <tr><td>What it produces</td><td>Documents, spreadsheets, decks, research write-ups, reorganized folders</td><td>Code changes, tests, pull requests</td></tr>
+            <tr><td>Where it runs</td><td>An isolated, sandboxed cloud environment, kept separate from the open internet</td><td>Directly against your local project, or a connected repo</td></tr>
+            <tr><td>Keeps going if you close your laptop</td><td>Yes — cloud tasks keep running; check in later from any device</td><td>Interactive sessions are tied to where you started them; scheduled/cloud tasks can run unattended</td></tr>
+            <tr><td>Extends with</td><td>Business-oriented connectors, skills, and plugins</td><td>Dev-oriented plugins, MCP servers, and skills</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rule-line">Rule of thumb: if the task produces a <strong>document, spreadsheet, or plan</strong> — Cowork. If it produces <strong>code</strong> — Code.</p>
+    </section>
+
+    <section id="basics">
+      <div class="section-head">
+        <p class="kicker small">4 &middot; Four things you'll use constantly</p>
+        <h2 class="title">Projects, Artifacts, Scheduling, and Customize</h2>
+        <p class="dek">Quick definitions — enough to recognize them and know when to reach for each.</p>
+      </div>
+      <div class="feature-grid cols-2">
+        <div class="feature-row">
+          <div class="icon-circle"><svg><use href="#i-folder"/></svg></div>
+          <div>
+            <h3>Projects</h3>
+            <p>A dedicated space for a recurring topic or workstream — with its own instructions, its own uploaded reference files, and its own shared chat history. Set one up instead of starting from zero every time.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="icon-circle"><svg><use href="#i-artifact"/></svg></div>
+          <div>
+            <h3>Artifacts</h3>
+            <p>Whenever Claude produces something substantial — a document, spreadsheet, slide, diagram, or small web app — it opens in its own panel next to the conversation, so you can review, keep iterating, and publish a shareable link when it's ready.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="icon-circle"><svg><use href="#i-clock"/></svg></div>
+          <div>
+            <h3>Scheduling</h3>
+            <p>Turn a task you do the same way every week into something Claude just does. Describe it once — "pull last week's numbers into this format every Monday at 8am" — and it runs on that cadence and delivers the output.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="icon-circle"><svg><use href="#i-sliders"/></svg></div>
+          <div>
+            <h3>Customize</h3>
+            <p>Your personal settings for extending what Claude can do. This is where Skills, Connectors, and Plugins live — covered in detail next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="customize">
+      <div class="section-head">
+        <p class="kicker small">5 &middot; Inside Customize</p>
+        <h2 class="title">Skills, Connectors, and Plugins</h2>
+        <p class="dek">These three build on each other. Worth knowing the difference so you're not assembling by hand something that already exists as a one-click install.</p>
+      </div>
+      <div class="feature-grid cols-3">
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-layers"/></svg></div>
+          <div>
+            <h3>Skills</h3>
+            <p>A packaged capability Claude uses automatically when it's relevant — building a properly formatted Excel model, a polished Word doc, or a PowerPoint deck. Toggle individual ones on or off, or add your own, under <code>Customize &rsaquo; Skills</code>.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-plug"/></svg></div>
+          <div>
+            <h3>Connectors</h3>
+            <p>A live link between Claude and one of your everyday apps or data sources — Outlook, SharePoint, Jira, Google Drive, Slack, and more. Once connected, Claude can search, read, and, where allowed, take action, using your own access and nothing more. Set these up under <code>Customize &rsaquo; Connectors</code>.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-circle"><svg><use href="#i-package"/></svg></div>
+          <div>
+            <h3>Plugins</h3>
+            <p>A ready-made bundle of the skills, connectors, and helper agents for a specific job. Install one and everything it needs comes with it, instead of wiring up each piece by hand. Find these under <code>Customize &rsaquo; Plugins</code>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="insight">
+        <svg><use href="#i-check"/></svg>
+        <p>Simplest way to hold this: <strong>Connectors</strong> give Claude access. <strong>Skills</strong> give Claude expertise. <strong>Plugins</strong> package both together so you don't have to assemble them yourself.</p>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="section-head">
+        <p class="kicker small">6 &middot; Do this first</p>
+        <h2 class="title">Two connectors worth installing</h2>
+        <p class="dek">Out of everything under Customize, these are the two I'd install in the first week.</p>
+      </div>
+      <div class="feature-grid cols-2">
+        <div class="card feature">
+          <div class="icon-circle"><svg><use href="#i-mail"/></svg></div>
+          <h3>Microsoft 365</h3>
+          <p>Reads and summarizes your Outlook email, and reads your calendar — always limited to what you can already see yourself.</p>
+          <p class="example">"Catch me up on what came in overnight." "Am I free Thursday afternoon?"</p>
+          <p class="example">Sign in with your work account — personal Microsoft accounts won't work.</p>
+          <span class="tag">Worth it for most people</span>
+        </div>
+        <div class="card feature">
+          <div class="icon-circle"><svg><use href="#i-ticket"/></svg></div>
+          <h3>Atlassian (Jira &amp; Confluence)</h3>
+          <p>Searches and reads your Jira issues and Confluence pages and spaces — always limited to what you can already see yourself.</p>
+          <p class="example">Ask it to summarize a sprint, check a ticket's status, or pull context from a spec before you start work.</p>
+          <span class="tag">Worth it if you use Jira</span>
+        </div>
+      </div>
+      <ol class="steps">
+        <li><span class="step-num">1</span><span>Open <code>Customize &rsaquo; Connectors</code>.</span></li>
+        <li><span class="step-num">2</span><span>Search for "Microsoft 365" — and "Atlassian" if you use Jira.</span></li>
+        <li><span class="step-num">3</span><span>Click <strong>Connect</strong>, then sign in when prompted.</span></li>
+        <li><span class="step-num">4</span><span>Don't see it listed? It may not be enabled by your organization yet — check with whoever administers Claude there rather than assuming it isn't available.</span></li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Written by <a class="link" href="https://hagestedt.com/">Adam Hagestedt</a> · <a class="link" href="/writing/">more writing</a></span>
+    <span><a class="link" href="https://hagestedt.com">hagestedt.com</a></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('click', function(){
+    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('light', !document.documentElement.classList.contains('dark'));
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = sections.indexOf(entry.target);
+      if (idx === -1) return;
+      if (entry.isIntersecting) {
+        links.forEach(function(l){ l.classList.remove('active'); });
+        links[idx].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(function(s){ if (s) io.observe(s); });
+})();
+</script>
+</body>
+</html>

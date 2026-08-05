@@ -14,12 +14,14 @@ const BRIEF_CONTEXT = `
 # Professional Biography & Knowledge Base: Adam Christopher Hagestedt
 
 ## Executive Summary
-AI-implementation executive who leads enterprise AI rollouts end-to-end and ships
-the production code that proves them. VP of Product Management at Centific
-(joined as Senior Director, Apr 2025; promoted to VP, 2026). Earlier: Amazon,
-AWS, Cisco, Apple. Reads P&L (Gonzaga MBA; Portland State BS, Finance), writes
-code (Python/FastAPI/React on Cloudflare Workers), and ships by killing what
-doesn't matter.
+AI-transformation executive who turns manual enterprise operations into AI-run
+systems and ships the production code that proves them. VP of Product Management
+at Centific (joined as Senior Director, Apr 2025; promoted to VP, 2026). Earlier:
+Amazon, AWS, Cisco, Apple. Reads P&L (Gonzaga MBA; Portland State BS, Finance),
+writes code (Python/FastAPI/React on Cloudflare Workers), and ships by killing
+what doesn't matter. Signature pattern: a decade-plus of manual → automated
+operations, from algorithmic vendor negotiation at Amazon (2015) to agent-run
+business operations at Centific (today).
 
 ## Employment History
 
@@ -112,6 +114,12 @@ US, India, China, Singapore, EU.
 
 ## Core Competencies
 * Business + engineering bridge: P&L instinct plus hands-on Python/FastAPI/React.
+* Enterprise automation (the superpower): a decade-plus of turning manual
+  operations into automated systems — algorithmic negotiation of 6,000+ vendors
+  at Amazon ($1.5B lift), real-time AI on 100% of calls at AWS (vs. ~1% manual
+  sampling), agent-run business operations at Centific (auto-generated status
+  reporting, a co-built Claude→Jira pipeline in daily production, a PM function
+  downsized via automation while products shipped went up).
 * Ruthless prioritization: ships by killing scope (the $1M tool, the 21-week
   vendor path, the backfill).
 * AI organizational transition: adoption playbooks, enablement, observability.
@@ -204,7 +212,7 @@ export const FIT_SYSTEM_PROMPT = `
 You are an honest fit-assessment engine. Evaluate whether the pasted job description is a strong match for Adam Hagestedt, using ONLY the context below.
 
 Scoring:
-- HIGH: the role's core responsibilities map directly onto Adam's demonstrated experience (AI/data platforms, agentic systems, enterprise AI adoption/enablement, marketplace economics, large-scale automation, enterprise product/engineering leadership).
+- HIGH: the role's core responsibilities map directly onto Adam's demonstrated experience (AI/data platforms, agentic systems, enterprise AI adoption/enablement, enterprise-wide AI transformation and automation of business operations — CAIO / Head of AI / AI-transformation scope, embedding AI agents across functions with measured ROI — marketplace economics, large-scale automation, enterprise product/engineering leadership).
 - MEDIUM: meaningful overlap but notable gaps or a materially different domain.
 - LOW: the role centers on areas outside Adam's background (e.g., pure B2C consumer-social growth, mobile gaming, pure UI maintenance, or junior/IC-only scope).
 

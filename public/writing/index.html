@@ -126,9 +126,15 @@
         .row.coming .row-num { color: var(--subtle); }
         .row.coming .row-title { color: var(--muted); }
 
-        .related { margin: 26px 0 8px; font-size: 14px; color: var(--muted); }
-        .related a { color: var(--brand); text-decoration: none; font-weight: 500; }
-        .related a:hover { text-decoration: underline; }
+        .more-posts { margin: 44px 0 8px; padding-top: 28px; border-top: 1px solid var(--border); }
+        .more-heading {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 22px;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin: 0 0 4px;
+        }
 
         footer.site {
             border-top: 1px solid var(--border);
@@ -242,9 +248,20 @@
                 <div class="row-state" data-role="state">Coming Aug 11</div>
             </a>
             </div>
-            <div class="related">
-                Related: <a href="/playbook.html">The 3-phase enterprise AI adoption playbook</a>,
-                the method behind the rollout these essays keep referencing.
+            <div class="more-posts">
+                <h2 class="more-heading">More from the site</h2>
+                <a class="row" href="/playbook.html">
+                    <div class="row-main">
+                        <div class="row-title">The 3-phase enterprise AI adoption playbook</div>
+                        <div class="row-teaser">The method behind the rollout these essays keep referencing.</div>
+                    </div>
+                </a>
+                <a class="row" href="/writing/chat-cowork-and-code/">
+                    <div class="row-main">
+                        <div class="row-title">Chat, Cowork, and Code</div>
+                        <div class="row-teaser">A practical field guide to getting started with Claude — setup, when to use Chat vs. Cowork vs. Code, and the two connectors worth installing first.</div>
+                    </div>
+                </a>
             </div>
         </main>
     </div>
@@ -253,7 +270,8 @@
         <div class="wrap foot-row">
             <div>
                 Written by <a href="https://hagestedt.com/">Adam Hagestedt</a> · VP of Product Management, AI implementation.
-                Also on the site: <a href="/playbook.html">the 3-phase adoption playbook</a>.
+                Also on the site: <a href="/playbook.html">the 3-phase adoption playbook</a> and
+                <a href="/writing/chat-cowork-and-code/">a field guide to Claude</a>.
             </div>
             <div><a href="mailto:hagestedt@gmail.com">hagestedt@gmail.com</a></div>
         </div>
