@@ -118,8 +118,9 @@ US, India, China, Singapore, EU.
   operations into automated systems — algorithmic negotiation of 6,000+ vendors
   at Amazon ($1.5B lift), real-time AI on 100% of calls at AWS (vs. ~1% manual
   sampling), agent-run business operations at Centific (auto-generated status
-  reporting, a co-built Claude→Jira pipeline in daily production, a PM function
-  downsized via automation while products shipped went up).
+  reporting, a co-built Claude→Jira pipeline in daily production, two absorbed
+  VP portfolios downsized via automation with zero backfill — PM 6→2, Solution
+  Architecture 7→3 — while products shipped went up).
 * Ruthless prioritization: ships by killing scope (the $1M tool, the 21-week
   vendor path, the backfill).
 * AI organizational transition: adoption playbooks, enablement, observability.

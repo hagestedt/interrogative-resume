@@ -62,6 +62,11 @@ export const HEADLINE = {
             label: "to demo RL environments at NVIDIA GTC",
             context: "agent-powered, live human-in-the-loop demo, externally shown at GTC — now in active RFP with multiple Mag-7 customers",
         },
+        {
+            stat: "13 → 5",
+            label: "PM + Solution-Architecture headcount, zero backfill",
+            context: "absorbed two departing VPs' portfolios — PM 6→2, SA 7→3 — while products shipped increased",
+        },
     ],
     builtAt: ["Apple", "Amazon", "AWS", "Cisco", "Centific"],
 };

@@ -34,7 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 <Avatar size={88} />
             </div>
             {/* PRIMARY — built for a 6-second scan: who, what title, one-line value
-                prop, three proof metrics. Rendered statically (no entrance animation
+                prop, proof metrics. Rendered statically (no entrance animation
                 that hides text) so it is instantly legible to humans and present in
                 the prerendered HTML that crawlers / ATS / unfurlers read. */}
             <p className="text-sm font-semibold tracking-wide text-cream-400 mb-4">
@@ -50,8 +50,8 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 {HEADLINE.valueProp}
             </p>
 
-            {/* Three headline metrics */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left">
+            {/* Headline metrics — grid tracks HEADLINE.metrics.length; currently 4 */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
                 {HEADLINE.metrics.map((m) => (
                     <div
                         key={m.label}
